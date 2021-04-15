@@ -1,0 +1,33 @@
+@import "colors.scss";
+
+*,
+html {
+  box-sizing: border-box;
+  font-size: 1em;
+}
+body {
+  font-family: sans-serif;
+  color: $defaultFont;
+  background: $background;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.svg-animation {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 2;
+}
+
+#circle_svg {
+  fill: $blue;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#loading_path {
+  stroke: $red;
+}

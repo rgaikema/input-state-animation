@@ -1,0 +1,24 @@
+
+form {
+    background: $white;
+  }
+  
+  label {
+    display: block;
+    margin: 1em 0 2em 0;
+  }
+  
+  input {
+    font-size: 1em;
+    background: $white;
+    border: 1px solid $grey-20;
+    box-sizing: border-box;
+    border-radius: 4px;
+    display: block;
+    padding: 0.5em;
+    margin: 0.5em 0 0.5em 0;
+  }
+
+  .form {
+    padding: 2em 2em;
+  }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Example</title>
+	<module href="/components/head.html"></module>
+</head>
+
+<body>
+	<div id="app">
+		<div class="wrapper">
+			<h1>Example</h1>
+			<p>
+				Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis
+				ornare vel eu leo.
+			</p>
+
+			<form class="form" action="">
+				<label for="name">
+					Name
+					<input id="name" type="text" />
+				</label>
+				<label for="email">
+					Email address
+					<input id="email" type="text" />
+				</label>
+				<label for="checkInput">
+					Checked?
+					<input type="checkbox" id="checkInput" name="check" value="Checked?" />
+				</label>
+			</form>
+
+			<svg class="svg-animation" width="24" height="24" viewbox="0 0 24 24">
+				<circle mask="url(#loading_path)" id="circle_svg" cx="12" cy="12" r="10" />
+				<!-- <path
+				id="circleIcon"
+				d="M2,12 c0,10 10,10 10,10 c0,0 10,0 10,-10 c0,0 0,-10 -10,-10"
+				/> -->
+				<mask id="loading_line">
+					<path id="loading_path" d="M2,12 c0,10 10,10 10,10 c0,0 10,0 10,-10 c0,0 0,-10 -10,-10"
+						stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" />
+				</mask>
+
+				<defs>
+					<path id="checkIcon" fill="transparent" stroke="blue" stroke-width="2" d="M2,12 l7,6 l12,-14" />
+				</defs>
+			</svg>
+			<!-- <svg width="24" height="24" viewbox="0 0 24 24">
+			<path
+			fill="transparent"
+			stroke="blue"
+			stroke-width="2"
+			d="M2,12 l7,6 l12,-14"
+			/>
+			</svg> -->
+		</div>
+	</div>
+	<script src="src/index.js"></script>
+</body>
+
+</html>
