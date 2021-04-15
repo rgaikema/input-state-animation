@@ -1,5 +1,3 @@
-@import "colors.scss";
-
 *,
 html {
   box-sizing: border-box;
@@ -16,18 +14,18 @@ body {
   max-width: 800px;
 }
 
-.svg-animation {
-  fill: transparent;
-  stroke: transparent;
-  stroke-width: 2;
+#loading_line {
+    visibility: hidden;
+    opacity: 0;
 }
 
-#circle_svg {
-  fill: $blue;
-  opacity: 0;
-  visibility: hidden;
+.stroke {
+    fill: $blue;
+    fill-rule: evenodd;
 }
 
-#loading_path {
-  stroke: $red;
+#svg_animation .mask {
+    fill: none;
+    stroke: #fff;
+    stroke-miterlimit: 10;
 }
