@@ -30,23 +30,118 @@
 				</label>
 			</form>
 
-			<svg id="svg_animation" class="svg-animation" width="24" height="24" viewbox="0 0 24 24">
+			<svg id="loading_svg" class="svg-animation" width="24" height="24" viewbox="0 0 24 24">
 				<g id="loading_line">
-					<path mask="url(#loading_line_mask)" id="loading_line_stroke" class="stroke" d="M2,12 c0,10 10,10 10,10 c0,0 10,0 10,-10 c0,0 0,-10 -10 ,-10"
+					<path
+						mask="url(#loading_line_mask)" 
+						id="loading_line_stroke" 
+						class="stroke"
+						d="
+							M 0, 12
+							a 12,12 0 1,1 24,0
+							a 12,12 0 1,1 -24,0
+						"
 					/>
 					<mask id="loading_line_mask">
-						<path id="loading_line_path" class="mask" d="M2,12 c0,10 10,10 10,10 c0,0 10,0 10,-10 c0,0 0,-10 -10,-10"
+						<path 
+							id="loading_line_path" 
+							class="mask" 
+							d="
+								M2,12 
+								c0,10 10,10 10,10 
+								c0,0 10,0 10,-10 
+								c0,0 0,-10 -10,-10
+							"
 							stroke-linecap="round" 
 							stroke-miterlimit="10" 
 							stroke-width="2" 
 						/>
 					</mask>
 				</g>
-				
-				<!-- <defs>
-					<path id="checkIcon" fill="transparent" stroke="blue" stroke-width="2" d="M2,12 l7,6 l12,-14" />
-				</defs> -->
 			</svg>
+			<div>
+				<svg id="check_mark_svg" class="svg-animation" width="24" height="24" viewbox="0 0 24 24">
+					<g id="check_mark">
+						<path
+							mask="url(#check_mark_mask)"
+							id="check_mark_stroke"
+							class="stroke"
+							d="
+								M 0, 12
+								a 12,12 0 1,1 24,0
+								a 12,12 0 1,1 -24,0
+							"
+						/>
+						<mask id="check_mark_mask">
+							<path 
+								id="check_mark_path" 
+								class="mask" 
+								d="
+									M 2,12 
+									l 7,6 
+									l 12,-14
+								"
+								stroke-linecap="round" 
+								stroke-miterlimit="10" 
+								stroke-width="2" 
+							/>
+						</mask>
+					</g>
+				</svg>
+			</div>
+
+			<div>
+				<svg id="cross_svg" class="svg-animation" width="24" height="24" viewbox="0 0 24 24">
+					<g id="cross">
+						<path
+							mask="url(#cross_stroke_left_mask)"
+							id="cross_left_part"
+							class="stroke"
+							d="
+								M 0, 12
+								a 12,12 0 1,1 24,0
+								a 12,12 0 1,1 -24,0
+							"
+						/>
+						<path
+							mask="url(#cross_stroke_right_mask)"
+							id="cross_right_part"
+							class="stroke"
+							d="
+								M 0, 12
+								a 12,12 0 1,1 24,0
+								a 12,12 0 1,1 -24,0
+							"
+						/>
+						<mask id="cross_stroke_left_mask">
+							<path
+								id="cross_stroke_left_path"
+								class="mask" 
+								d="
+									M 2,2 
+									L 22,22 
+								"
+								stroke-linecap="round" 
+								stroke-miterlimit="10" 
+								stroke-width="2" 
+							/>
+						</mask>
+
+						<mask id="cross_stroke_right_mask">
+							<path
+								id="cross_stroke_right_path"
+								class="mask" 
+								d="
+									M 22,2 
+									L 2,22
+								"
+								stroke-linecap="round" 
+								stroke-miterlimit="10" 
+								stroke-width="2" 
+							/>
+						</mask>
+				</svg>
+			</div>
 		</div>
 	</div>
 	<script src="bundle.js"></script>

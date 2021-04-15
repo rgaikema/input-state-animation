@@ -14,7 +14,9 @@ body {
   max-width: 800px;
 }
 
-#loading_line {
+#loading_line,
+#check_mark,
+#cross {
     visibility: hidden;
     opacity: 0;
 }
@@ -24,7 +26,9 @@ body {
     fill-rule: evenodd;
 }
 
-#svg_animation .mask {
+#loading_svg .mask,
+#check_mark_svg .mask,
+#cross_svg .mask {
     fill: none;
     stroke: #fff;
     stroke-miterlimit: 10;
