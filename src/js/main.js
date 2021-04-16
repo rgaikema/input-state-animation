@@ -13,29 +13,62 @@ document.addEventListener("DOMContentLoaded", function () {
         .set(["#loading_line", "#check_mark","#cross"], {autoAlpha:0})
 
         // Fade in and draw
-        .add("start")
-        .to("#loading_line", {autoAlpha:1, duration: 2})
-        .fromTo("#loading_line_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:"75% 0%", ease: "power1.Out"}, "start+=.2");
-
+        .to("#loading_line", {autoAlpha:1, duration: .2})
+        .fromTo("#loading_line_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:"75% 0%", ease: "power1.Out"});
+    
         return tl;
-    }
+    };
 
     const rotate = () => {
-        const tl = gsap.timeline({repeat: -1});
+
+        // const checkValue = () => {
+        //     const prog = tl.progress();
+        //     if(prog === 1){
+        //         console.log("check");
+        //     }
+        // };
+        const valueHolder = document.getElementById("progressValue");
+        let counter = 0;
+        const checkRepeat = () => {
+            counter++;
+            if(counter === 3){
+                console.log("done");
+                tlMain
+                .add(endLoading());
+            }
+            valueHolder.innerText = counter;
+        };
+
+
+        const tl = gsap.timeline({repeat: 3, onRepeat: checkRepeat});
 
          // Rotate
          tl
-            .add('rotation')
             .fromTo("#loading_line_path", {transformOrigin: "50% 50%", rotate: "0"}, {duration: 2, rotate: "-360", ease: "power1.Out"});
+
+        return tl;
+    };
+
+    const endLoading = () => {
+        
+        const remove = () => {
+            tlMain
+            .add(removeLoading());
+        }
+
+        const tl = gsap.timeline({onComplete: remove});
+
+        tl
+            .fromTo("#loading_line_path", {drawSVG:"75% 0%"},{duration: .7, drawSVG:"100% 0%", ease: "power1.Out"});
 
         return tl;
     }
 
-    const endLoading = () => {
-        const tl = gsap.timeline();
+    const removeLoading = () => {
 
+        const tl = gsap.timeline();
         tl
-            .fromTo("#loading_line_path", {drawSVG:"100% 0%"},{duration:.7});
+            .fromTo("#loading_line_path", {drawSVG:"100% 0%"},{duration: .7, drawSVG:"0% 0%", ease: "power1.Out"});
 
         return tl;
     }
@@ -44,9 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .add(fadeIn())
         .add(rotate());
 
-        //We get success of fail info
-    tlMain2
-        .add(endLoading());
 
 
 
