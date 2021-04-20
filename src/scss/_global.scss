@@ -24,6 +24,10 @@ body {
 .stroke {
     fill: $blue;
     fill-rule: evenodd;
+
+    &.invisible {
+        fill: transparent;
+    }
 }
 
 #loading_svg .mask,
