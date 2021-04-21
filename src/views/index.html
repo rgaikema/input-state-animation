@@ -99,6 +99,30 @@
 
 				<!-- Cross group -->
 				<g id="cross">
+					<path
+						mask="url(#cross_stroke_left_mask)" 
+						id="cross_left_stroke" 
+						class="stroke"
+						d="
+							M 0 0
+							H 24
+							V 24
+							H 0
+							L 0 0
+						"
+					/>
+					<path
+						mask="url(#cross_stroke_right_mask)" 
+						id="cross_right_stroke" 
+						class="stroke"
+						d="
+							M 0 0
+							H 24
+							V 24
+							H 0
+							L 0 0
+						"
+					/>
 					<mask id="cross_stroke_left_mask">
 						<path
 							id="cross_stroke_left_path"
@@ -131,6 +155,10 @@
 			</svg>
 			<div class="controls">
 				<span id="progressValue">0</span>
+				<div class="buttons">
+					<button class="btn" id="btnSucces">Succes</button>
+					<button class="btn" id="btnFail">Fail</button>
+				</div>
 			</div>
 		</div>
 	</div>

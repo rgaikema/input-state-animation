@@ -22,21 +22,33 @@ document.addEventListener("DOMContentLoaded", function () {
     // Loading animation
     const rotate = () => {
         const valueHolder = document.getElementById("progressValue");
-        let counter = 0;
+        let counter = 1;
+        let response = false;
+
+        const btnSucces = document.getElementById("btnSucces");
+        // const btnFail = document.getElementById("btnFucces");
+
+        btnSucces.addEventListener("click", function() {
+            response = true;
+        });
 
         // After 3x loading add removing line animation
-        const checkRepeat = () => {
+        const checkResponse = () => {
             counter++;
             if(counter === 3){
                 console.log("done");
+                tl.pause();
                 tlMain
                 .add(endLoading());
+            }else {
+                console.log("repeat");
+                tl.add(tl.recent());
             }
             valueHolder.innerText = counter;
         };
 
         // Fill loader & check amount of repeats
-        const tl = gsap.timeline({repeat: 3, onRepeat: checkRepeat});
+        const tl = gsap.timeline({onComplete: checkResponse});
          tl
             .fromTo("#loading_line_path", {transformOrigin: "50% 50%", rotate: "0"}, {duration: 2, rotate: "-360", ease: "power1.Out"});
 
@@ -56,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // After filling the circle start the line removal animation
         const tl = gsap.timeline({onComplete: remove});
         tl
-            .fromTo("#loading_line_path", {drawSVG:"75% 0%"},{duration: .7, drawSVG:"100% 0%", ease: "power1.Out"});
+            .fromTo("#loading_line_path", {drawSVG:"75% 0%"},{duration: .6, drawSVG:"100% 0%", ease: "power1.Out"});
         
             return tl;
     };
@@ -85,8 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Animate the check mark in
         tl
-        .to("#check_mark", {autoAlpha:1, duration: .2})
-        .fromTo("#check_mark_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:true, ease: "power1.Out"}, "-=.2");
+        .to("#check_mark", {autoAlpha:1, duration: 0, ease: "none"})
+        .fromTo("#check_mark_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:true, ease: "power1.Out"});
 
     };
 
