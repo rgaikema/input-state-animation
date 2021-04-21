@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         tl  
             .set(["#loading_line", "check_mark", "cross"], {autoAlpha:0})
             .to("#loading_line", {autoAlpha:1, duration: .2})
-            .fromTo("#loading_line_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:"75% 0%", ease: "power1.Out"});
+            .fromTo("#loading_line_path", {drawSVG:"0% 0%"},{duration: 1, drawSVG:"75% 0%", ease: "power1.Out"});
     
         return tl;
     };
@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 tlMain
                     .add(endLoading(response));
             }else{
+                // TODO check performance for adding recent tweens
                 tl
                     .add(tl.recent());
             }
@@ -48,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Fill loader & check amount of repeats
         const tl = gsap.timeline({onComplete: checkResponse});
         tl
-            .fromTo("#loading_line_path", {transformOrigin: "50% 50%", rotate: "0"}, {duration: 2, rotate: "-360", ease: "power1.Out"});
+            .fromTo("#loading_line_path", {transformOrigin: "50% 50%", rotate: "0"}, {duration: 1.6, rotate: "-360", ease: "power1.Out"});
 
         return tl;
     };
@@ -115,10 +116,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // Draw the cross
         tl
             .to("#cross", {autoAlpha:1, duration: 0, ease: "none"})
-            .fromTo("#cross_stroke_left_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:true, ease: "power1.Out"})
-            .fromTo("#cross_stroke_right_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:true, ease: "power1.Out"}, "-=1.4");
+            .fromTo("#cross_stroke_left_path", {drawSVG:"0% 0%"},{duration: 1, drawSVG:true, ease: "power1.Out"})
+            .fromTo("#cross_stroke_right_path", {drawSVG:"0% 0%"},{duration: 1, drawSVG:true, ease: "power1.Out"}, "-=.8");
     };
-
 
     // Main timeline starts with loading animation
     tlMain
