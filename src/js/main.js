@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Loading animation
     const rotate = () => {
         const valueHolder = document.getElementById("progressValue");
-        let counter = 1;
+        let counter = 0;
         let response = false;
 
         const btnSucces = document.getElementById("btnSucces");
@@ -34,8 +34,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // After 3x loading add removing line animation
         const checkResponse = () => {
+            console.log(response);
             counter++;
-            if(counter === 3){
+            if(response === true){
                 console.log("done");
                 tl.pause();
                 tlMain
