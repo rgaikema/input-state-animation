@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 tlMain
                     .add(endLoading(response));
             }else{
-                // TODO check performance for adding recent tweens
+                // Recent method is only a return of the last tween, not adding an extra tween
                 tl
                     .add(tl.recent());
             }
@@ -56,9 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         tl
             .fromTo("#loading_line_path", {transformOrigin: "50% 50%", rotate: "0"}, {duration: 1.6, rotate: "-360", ease: "power1.Out"});
-            // .add("partlyRotate")
-            // .fromTo("#loading_line_path", {transformOrigin: "50% 50%", rotate: "0"}, {duration: 1.6, rotate: "-307", ease: "power1.Out"});
-
 
         return tl;
     };
@@ -86,8 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
             .fromTo("#loading_line_path", {drawSVG:"75% 0%"},{duration: .6, drawSVG:"100% 0%", ease: "power1.Out"});
         }
 
-        
-        
         return tl;
     };
 
@@ -113,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const tl = gsap.timeline({onComplete: showResponseAnimation});        
         
         tl
-            .fromTo("#loading_line_path", {drawSVG:"100% 0%"},{duration: 1.2, drawSVG: "100% 100%", ease: "power1.Out"});
+            .fromTo("#loading_line_path", {drawSVG:"100% 0%"},{duration: .8, drawSVG: "100% 100%", ease: "power1.Out"});
 
          return tl;
     };
@@ -125,8 +120,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // Draw check mark
         tl
             .to("#check_mark", {autoAlpha:1, duration: 0, ease: "none"})
+            .to (".svg_wrapper", {className:"+=svg_wrapper success", duration: .1})
             .fromTo("#check_mark_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:true, ease: "power1.Out"})
-            .to("#check_mark", {autoAlpha:0, duration: .4, ease: "none"});
+            .to("#check_mark", {autoAlpha:0, duration: .4, eease: "power1.Out"}, "+=1");
 
     };
 
@@ -137,9 +133,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // Draw the cross
         tl
             .to("#cross", {autoAlpha:1, duration: 0, ease: "none"})
+            .to (".svg_wrapper", {className:"+=svg_wrapper fail", duration: .1})
             .fromTo("#cross_stroke_left_path", {drawSVG:"0% 0%"},{duration: 1, drawSVG:true, ease: "power1.Out"})
             .fromTo("#cross_stroke_right_path", {drawSVG:"0% 0%"},{duration: 1, drawSVG:true, ease: "power1.Out"}, "-=.8")
-            .to("#cross", {autoAlpha:0, duration: .4, ease: "none"});
+            .to("#cross", {autoAlpha:0, duration: .4, ease: "power1.Out"}, "+=1");
     };
 
     // Main timeline starts with loading animation
