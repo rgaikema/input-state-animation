@@ -30,7 +30,9 @@
 				</label>
 			</form>
 
-			<svg id="loading_svg" class="svg-animation" width="24" height="24" viewbox="0 0 24 24">
+			<svg id="loading_svg" class="svg-animation" width="240" height="240" viewbox="0 0 24 24">
+
+				<!-- Loading line group -->
 				<g id="loading_line">
 					<path
 						mask="url(#loading_line_mask)" 
@@ -48,29 +50,32 @@
 							id="loading_line_path" 
 							class="mask"
 							d="
-								M2,12 
-								c0,10 10,10 10,10 
-								c0,0 10,0 10,-10 
-								c0,0 0,-10 -10,-10
-								c0,0 -10,0 -10,10
+							M2,12
+							a10,10 0 1,0 20,0
+							a10,10 0 1,0 -20,0
 							"
+							
 							stroke-linecap="round" 
 							stroke-miterlimit="10" 
 							stroke-width="2"
 						/>
 					</mask>
 
-				</g><!-- End of loading line group -->
+				</g>
+				<!-- End of loading line group -->
 
+				<!-- Check mark group -->
 				<g id="check_mark">
 					<path
 						mask="url(#check_mark_mask)" 
 						id="check_mark_stroke" 
 						class="stroke"
 						d="
-							M 0, 12
-							a 12,12 0 1,1 24,0
-							a 12,12 0 1,1 -24,0
+							M 0 0
+							H 24
+							V 24
+							H 0
+							L 0 0
 						"
 					/>
 
@@ -89,8 +94,10 @@
 						/>
 					</mask>
 				
-				</g><!-- End of check mark group -->
+				</g>
+				<!-- End of check mark group -->
 
+				<!-- Cross group -->
 				<g id="cross">
 					<mask id="cross_stroke_left_mask">
 						<path
@@ -120,6 +127,7 @@
 						/>
 					</mask>
 				</g>
+				<!-- End of cross group -->
 			</svg>
 			<div class="controls">
 				<span id="progressValue">0</span>
