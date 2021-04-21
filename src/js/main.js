@@ -6,51 +6,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const tlMain =  gsap.timeline();
 
-    const fadeIn = () => {
+    const startLoading = () => {
         const tl =  gsap.timeline();
 
+        // Start drawing the circle stroke
         tl  
-        .set(["#loading_line", "#check_mark","#cross"], {autoAlpha:0})
-
-        // Fade in and draw
-        .to("#loading_line", {autoAlpha:1, duration: .2})
-        .fromTo("#loading_line_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:"75% 0%", ease: "power1.Out"});
+            .set(["#loading_line", "check_mark", "cross"], {autoAlpha:0})
+            .to("#loading_line", {autoAlpha:1, duration: .2})
+            .fromTo("#loading_line_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:"75% 0%", ease: "power1.Out"});
     
         return tl;
     };
 
     // Loading animation
-    const rotate = () => {
-        const valueHolder = document.getElementById("progressValue");
-        let counter = 0;
-        let response = false;
-
+    const loading = () => {
+        let response = "loading";
         const btnSucces = document.getElementById("btnSucces");
-        // const btnFail = document.getElementById("btnFucces");
+        const btnFail = document.getElementById("btnFail");
 
+        // Check for manual input - TODO replace with promise status
         btnSucces.addEventListener("click", function() {
-            response = true;
+            response = "succes";
+        });
+        btnFail.addEventListener("click", function() {
+            response = "fail";
         });
 
-        // After 3x loading add removing line animation
+        // Check response during loading
         const checkResponse = () => {
-            console.log(response);
-            counter++;
-            if(response === true){
-                console.log("done");
-                tl.pause();
+            if(response === "succes" || response === "fail"){
+                tl
+                    .pause();
                 tlMain
-                .add(endLoading());
-            }else {
-                console.log("repeat");
-                tl.add(tl.recent());
+                    .add(endLoading(response));
+            }else{
+                tl
+                    .add(tl.recent());
             }
-            valueHolder.innerText = counter;
         };
 
         // Fill loader & check amount of repeats
         const tl = gsap.timeline({onComplete: checkResponse});
-         tl
+        tl
             .fromTo("#loading_line_path", {transformOrigin: "50% 50%", rotate: "0"}, {duration: 2, rotate: "-360", ease: "power1.Out"});
 
         return tl;
@@ -58,64 +55,74 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // Completing the loading animation 
-    const endLoading = () => {
+    const endLoading = (response) => {
 
         // Add loading line removal animation
         const remove = () => {
             tlMain
-            .add(removeLoading());
+                .add(removeLoading(response));
         };
 
-        // After filling the circle start the line removal animation
+        // Complete the circle
         const tl = gsap.timeline({onComplete: remove});
         tl
             .fromTo("#loading_line_path", {drawSVG:"75% 0%"},{duration: .6, drawSVG:"100% 0%", ease: "power1.Out"});
         
-            return tl;
+        return tl;
     };
 
 
     // Remove the line animation
-    const removeLoading = () => {
+    const removeLoading = (response) => {
 
-        // Add the check mark animation to the Main timeline after the loading line is gone
-        const checkIn = () => {
-            tlMain
-            .add(check());
+        const showResponseAnimation = () => {
+            console.log(response);
+
+            if (response === "succes") {
+                tlMain
+                    .add(showCheckMark());
+            } else if(response === "fail"){
+                tlMain
+                    .add(showCross());
+            }else {
+                console.log("error while saving input");
+            }
         };
 
         // After the loading line is gone start the check mark animation
-        const tl = gsap.timeline({onComplete: checkIn});
+        const tl = gsap.timeline({onComplete: showResponseAnimation});
         tl
             .fromTo("#loading_line_path", {drawSVG:"100% 0%"},{duration: 1.2, drawSVG:"100% 100%", ease: "power1.Out"});
-        
-            return tl;
+
+         return tl;
     };
 
-    // Check mark animation In
-    const check = () => {
+    //Check mark animation
+    const showCheckMark = () => {
         const tl = gsap.timeline();
 
-        // Animate the check mark in
+        // Draw check mark
         tl
-        .to("#check_mark", {autoAlpha:1, duration: 0, ease: "none"})
-        .fromTo("#check_mark_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:true, ease: "power1.Out"});
+            .to("#check_mark", {autoAlpha:1, duration: 0, ease: "none"})
+            .fromTo("#check_mark_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:true, ease: "power1.Out"});
 
     };
 
+    //Cross animation
+    const showCross = () => {
+        const tl = gsap.timeline();
+
+        // Draw the cross
+        tl
+            .to("#cross", {autoAlpha:1, duration: 0, ease: "none"})
+            .fromTo("#cross_stroke_left_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:true, ease: "power1.Out"})
+            .fromTo("#cross_stroke_right_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:true, ease: "power1.Out"}, "-=1.4");
+    };
+
+
+    // Main timeline starts with loading animation
     tlMain
-        .add(fadeIn())
-        .add(rotate());
+        .add(startLoading())
+        .add(loading());
 
-
-
-
-        // .fromTo("#loading_line_path", {drawSVG:"100% 0%"},{duration: 1.8, drawSVG:"0% 0%", ease: "power1.Out"}, "start+=2.2");
-
-    //tl
-        // .to("#check_mark", {autoAlpha:1, duration: 2})
-        // .fromTo("#check_mark_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:true, ease: "power1.Out"}, "start+=2.2");
-
-        // .fromTo("#cross_stroke_left_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:true, ease: "power1.Out"}, "start+=4.2");
-        // .fromTo("#cross_stroke_right_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:true, ease: "power1.Out"}, "start+=4.4");
 });
