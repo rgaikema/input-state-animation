@@ -1,0 +1,42 @@
+#loading_line,
+#check_mark,
+#cross {
+	visibility: hidden;
+	opacity: 0;
+}
+
+.stroke {
+	fill: $defaultFont;
+	fill-rule: evenodd;
+	transition: all .3s ease-in-out .4s;
+
+	&.invisible {
+		fill: transparent;
+	}
+
+	
+}
+
+.svg_wrapper {
+  padding: 0 1em;
+  
+  &.success {
+	.stroke {
+	  fill: $success;
+
+	}
+  }
+  &.fail {
+	.stroke{
+	  fill: $alert;
+	}
+  }
+}
+
+#loading_svg .mask,
+#check_mark_svg .mask,
+#cross_svg .mask {
+	fill: none;
+	stroke: #fff;
+	stroke-miterlimit: 10;
+}

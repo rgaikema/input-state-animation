@@ -12,14 +12,18 @@
 			<h1>Example animation for status input</h1>
 
 			<form class="form" action="">
-				<label for="name">
-					Name
-					<span class="flex">
-						<input id="name" type="text" />
-						<module href="/components/svg.html"></module>
-					</span>
-					
+				<label for="options">
+					Option
 				</label>
+				<div class="input-wrapper">
+					<select name="options" id="options">
+						<option value="option1">Option1</option>
+						<option value="option2">Option2</option>
+						<option value="option3">Option3</option>
+						<option value="option4">Option4</option>
+					</select>
+				</div>
+			
 				<label for="email">
 					Email address
 					<input id="email" type="text" />
@@ -39,6 +43,7 @@
 			</div>
 		</div>
 	</div>
+	<module href="/components/svg.html"></module>
 	<script src="bundle.js"></script>
 </body>
 
