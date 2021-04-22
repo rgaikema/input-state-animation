@@ -34,7 +34,7 @@ body {
 .stroke {
 	fill: $defaultFont;
 	fill-rule: evenodd;
-	transition: .3s ease-in-out all;
+	transition: all .3s ease-in-out .4s;
 
 	&.invisible {
 		fill: transparent;

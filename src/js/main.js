@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 tl
                     .add(tl.recent());
             }
-
         };
 
         // Fill loader & check amount of repeats
@@ -61,10 +60,10 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
 
-    // Completing the loading animation 
+    // Stop rotating at the right point & complete the loading animation
     const endLoading = (response) => {
 
-        // Add loading line removal animation
+        // To start loading line removal animation
         const remove = () => {
             tlMain
                 .add(removeLoading(response));
@@ -90,7 +89,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Remove the line animation
     const removeLoading = (response) => {
 
-        const showResponseAnimation = () => {
+        // To start appropriate timeline
+        const startResponseAnimation = () => {
             console.log(response);
 
             if (response === "success") {
@@ -105,9 +105,19 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         // After the loading line is gone start the check mark animation
-        const tl = gsap.timeline({onComplete: showResponseAnimation});        
+        const tl = gsap.timeline({onComplete: startResponseAnimation});    
+
+        // Set appropriate class name based on response
+        let className;
+        if (response === "success") {
+            className = "+=svg_wrapper success";
+        }else {
+            className = "+=svg_wrapper fail";
+        }
         
-        tl
+         // Change class name for matching colors based on response & remove loading stroke
+        tl  
+            .to (".svg_wrapper", {className: className, duration: .1})
             .fromTo("#loading_line_path", {drawSVG:"100% 0%"},{duration: .8, drawSVG: "100% 100%", ease: "power1.Out"});
 
          return tl;
@@ -120,7 +130,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // Draw check mark
         tl
             .to("#check_mark", {autoAlpha:1, duration: 0, ease: "none"})
-            .to (".svg_wrapper", {className:"+=svg_wrapper success", duration: .1})
             .fromTo("#check_mark_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:true, ease: "power1.Out"})
             .to("#check_mark", {autoAlpha:0, duration: .4, eease: "power1.Out"}, "+=1");
 
