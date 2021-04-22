@@ -1,36 +1,48 @@
+.svg-animation {
+	width: 20px;
+	height: 20px;
+	pointer-events: none;
+}
+
+
 #loading_line,
 #check_mark,
-#cross {
-	visibility: hidden;
+#cross,
+#indicator {
 	opacity: 0;
 }
 
 .stroke {
 	fill: $defaultFont;
 	fill-rule: evenodd;
-	transition: all .3s ease-in-out .4s;
+	transition: all 0.3s ease-in-out 0.4s;
 
 	&.invisible {
 		fill: transparent;
 	}
-
-	
 }
 
 .svg_wrapper {
-  padding: 0 1em;
-  
-  &.success {
-	.stroke {
-	  fill: $success;
+	position: absolute;
+	z-index: 2;
+	display: inline-block;
+	padding: .2em;
+    right: -8%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+	background: radial-gradient(circle at 50%, #ebeaea, #f1f1f1 50%,  transparent 75%);
 
+	&.success {
+		.stroke {
+			fill: $success;
+		}
 	}
-  }
-  &.fail {
-	.stroke{
-	  fill: $alert;
+	&.fail {
+		.stroke {
+			fill: $alert;
+		}
 	}
-  }
 }
 
 #loading_svg .mask,

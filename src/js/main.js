@@ -4,6 +4,17 @@ gsap.registerPlugin(DrawSVGPlugin);
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    //Place element right position
+    const indicator =  document.getElementById("indicator");
+    const indicatorWidth = indicator.offsetWidth;
+    const optionsElement =  document.getElementById("options-1");
+
+
+    indicator.style.height = `${indicatorWidth}px`;
+    optionsElement.parentNode.appendChild(indicator);
+
+
+    // Main Timeline
     const tlMain =  gsap.timeline();
 
     const startLoading = () => {
@@ -11,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Start drawing the circle stroke
         tl  
-            .set(["#loading_line", "check_mark", "cross"], {autoAlpha:0})
-            .to("#loading_line", {autoAlpha:1, duration: .2})
+            .set(["#loading_line", "check_mark", "cross"], {opacity:0})
+            .to(["#loading_line","#indicator"], {opacity:1, duration: .2})
             .fromTo("#loading_line_path", {drawSVG:"0% 0%"},{duration: 1, drawSVG:"75% 0%", ease: "power1.Out"});
     
         return tl;
@@ -105,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         // After the loading line is gone start the check mark animation
-        const tl = gsap.timeline({onComplete: startResponseAnimation});    
+        const tl = gsap.timeline();    
 
         // Set appropriate class name based on response
         let className;
@@ -118,7 +129,8 @@ document.addEventListener("DOMContentLoaded", function () {
          // Change class name for matching colors based on response & remove loading stroke
         tl  
             .to (".svg_wrapper", {className: className, duration: .1})
-            .fromTo("#loading_line_path", {drawSVG:"100% 0%"},{duration: .8, drawSVG: "100% 100%", ease: "power1.Out"});
+            .fromTo("#loading_line_path", {drawSVG:"100% 0%"},{duration: .8, drawSVG: "100% 100%", ease: "power1.Out"})
+            .call(startResponseAnimation);
 
          return tl;
     };
@@ -129,9 +141,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Draw check mark
         tl
-            .to("#check_mark", {autoAlpha:1, duration: .2, ease: "none"})
+            .to("#check_mark", {opacity:1, duration: .2, ease: "none"})
             .fromTo("#check_mark_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:true, ease: "power1.Out"})
-            .to("#check_mark", {autoAlpha:0, duration: .4, ease: "power1.Out"}, "+=1");
+            .to("#check_mark", {opacity:0, duration: .4, ease: "power1.Out"}, "+=1")
+            .to("#indicator", {opacity:0, duration: .4, ease: "power1.Out"}, "-=.2");
 
         return tl;
 
@@ -143,11 +156,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Draw the cross
         tl
-            .to("#cross", {autoAlpha:1, duration: .2, ease: "none"})
+            .to("#cross", {opacity:1, duration: .2, ease: "none"})
             .to (".svg_wrapper", {className:"+=svg_wrapper fail", duration: .1})
             .fromTo("#cross_stroke_left_path", {drawSVG:"0% 0%"},{duration: 1, drawSVG:true, ease: "power1.Out"})
             .fromTo("#cross_stroke_right_path", {drawSVG:"0% 0%"},{duration: 1, drawSVG:true, ease: "power1.Out"}, "-=.8")
-            .to("#cross", {autoAlpha:0, duration: .4, ease: "power1.Out"}, "+=1");
+            .to("#cross", {opacity:0, duration: .4, ease: "power1.Out"}, "+=1")
+            .to("#indicator", {opacity:0, duration: .4, ease: "power1.Out"}, "-=.2");
     };
 
     // Main timeline starts with loading animation
