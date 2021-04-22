@@ -129,9 +129,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Draw check mark
         tl
-            .to("#check_mark", {autoAlpha:1, duration: 0, ease: "none"})
+            .to("#check_mark", {autoAlpha:1, duration: .2, ease: "none"})
             .fromTo("#check_mark_path", {drawSVG:"0% 0%"},{duration: 1.8, drawSVG:true, ease: "power1.Out"})
-            .to("#check_mark", {autoAlpha:0, duration: .4, eease: "power1.Out"}, "+=1");
+            .to("#check_mark", {autoAlpha:0, duration: .4, ease: "power1.Out"}, "+=1");
+
+        return tl;
 
     };
 
@@ -141,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Draw the cross
         tl
-            .to("#cross", {autoAlpha:1, duration: 0, ease: "none"})
+            .to("#cross", {autoAlpha:1, duration: .2, ease: "none"})
             .to (".svg_wrapper", {className:"+=svg_wrapper fail", duration: .1})
             .fromTo("#cross_stroke_left_path", {drawSVG:"0% 0%"},{duration: 1, drawSVG:true, ease: "power1.Out"})
             .fromTo("#cross_stroke_right_path", {drawSVG:"0% 0%"},{duration: 1, drawSVG:true, ease: "power1.Out"}, "-=.8")
