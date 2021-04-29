@@ -3,120 +3,61 @@
         <!-- Loading line group -->
         <g id="loading_line">
             <path
-                mask="url(#loading_line_mask)" 
-                id="loading_line_stroke" 
-                class="stroke"
+                id="loading_line_path" 
+                class="line"
                 d="
-                    M 0, 12
-                    a 12,12 0 1,1 24,0
-                    a 12,12 0 1,1 -24,0
+                    M2,12
+                    a10,10 0 1,0 20,0
+                    a10,10 0 1,0 -20,0
                 "
+                stroke-linecap="round" 
+                stroke-miterlimit="10" 
+                stroke-width="2"
             />
-
-            <mask id="loading_line_mask">
-                <path
-                    id="loading_line_path" 
-                    class="mask"
-                    d="
-                        M2,12
-                        a10,10 0 1,0 20,0
-                        a10,10 0 1,0 -20,0
-                    "
-                    stroke-linecap="round" 
-                    stroke-miterlimit="10" 
-                    stroke-width="2"
-                />
-            </mask>
-
         </g>
         <!-- End of loading line group -->
 
         <!-- Check mark group -->
         <g id="check_mark">
-            <path
-                mask="url(#check_mark_mask)" 
-                id="check_mark_stroke" 
-                class="stroke"
+            <path 
+                id="check_mark_path" 
+                class="line" 
                 d="
-                    M 0 0
-                    H 24
-                    V 24
-                    H 0
-                    L 0 0
+                    M 2,12 
+                    l 7,6 
+                    l 12,-14
                 "
+                stroke-linecap="round" 
+                stroke-miterlimit="10" 
+                stroke-width="2" 
             />
-
-            <mask id="check_mark_mask">
-                <path 
-                    id="check_mark_path" 
-                    class="mask" 
-                    d="
-                        M 2,12 
-                        l 7,6 
-                        l 12,-14
-                    "
-                    stroke-linecap="round" 
-                    stroke-miterlimit="10" 
-                    stroke-width="2" 
-                />
-            </mask>
-        
         </g>
         <!-- End of check mark group -->
 
         <!-- Cross group -->
         <g id="cross">
             <path
-                mask="url(#cross_stroke_left_mask)" 
-                id="cross_left_stroke" 
-                class="stroke"
+                id="cross_stroke_left_path"
+                class="line" 
                 d="
-                    M 0 0
-                    H 24
-                    V 24
-                    H 0
-                    L 0 0
+                    M 6,6 
+                    L 18,18
                 "
+                stroke-linecap="round" 
+                stroke-miterlimit="10" 
+                stroke-width="2" 
             />
             <path
-                mask="url(#cross_stroke_right_mask)" 
-                id="cross_right_stroke" 
-                class="stroke"
+                id="cross_stroke_right_path"
+                class="line" 
                 d="
-                    M 0 0
-                    H 24
-                    V 24
-                    H 0
-                    L 0 0
+                    M 18,6 
+                    L 6,18
                 "
+                stroke-linecap="round" 
+                stroke-miterlimit="10" 
+                stroke-width="2" 
             />
-            <mask id="cross_stroke_left_mask">
-                <path
-                    id="cross_stroke_left_path"
-                    class="mask" 
-                    d="
-                        M 6,6 
-                        L 18,18 
-                    "
-                    stroke-linecap="round" 
-                    stroke-miterlimit="10" 
-                    stroke-width="2" 
-                />
-            </mask>
-
-            <mask id="cross_stroke_right_mask">
-                <path
-                    id="cross_stroke_right_path"
-                    class="mask" 
-                    d="
-                        M 18,6 
-                        L 6,18
-                    "
-                    stroke-linecap="round" 
-                    stroke-miterlimit="10" 
-                    stroke-width="2" 
-                />
-            </mask>
         </g>
         <!-- End of cross group -->
     </svg>

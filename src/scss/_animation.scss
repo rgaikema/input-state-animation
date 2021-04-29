@@ -4,7 +4,6 @@
 	pointer-events: none;
 }
 
-
 #loading_line,
 #check_mark,
 #cross,
@@ -34,21 +33,19 @@
 	background: radial-gradient(circle at 50%, #ebeaea, #f1f1f1 50%,  transparent 75%);
 
 	&.success {
-		.stroke {
-			fill: $success;
+		#check_mark .line {
+			stroke: $success;
 		}
 	}
 	&.fail {
-		.stroke {
-			fill: $alert;
+		#cross .line {
+			stroke: $alert;
 		}
 	}
 }
 
-#loading_svg .mask,
-#check_mark_svg .mask,
-#cross_svg .mask {
+.line {
 	fill: none;
-	stroke: #fff;
+	stroke: $defaultFont;
 	stroke-miterlimit: 10;
 }

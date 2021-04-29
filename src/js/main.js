@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(response);
 
             //Continue with appropriate timeline
-            response === "success" ? tlMain.add(showCheckMark()) : tlMain.add(showCross())
+            response === "success" ? tlMain.add(showCheckMark()) : tlMain.add(showCross());
         };
  
         // Set appropriate class name based on response
