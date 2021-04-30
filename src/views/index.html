@@ -12,10 +12,17 @@
 			<h1>Example animation for status input</h1>
 
 			<form class="form" action="">
+
+				<label for="check-1">Check 1</label>
+				<input type="checkbox" id="check-1" name="check-1" value="Check 1" data-component="1"/>
+				
+				<label for="check-2">Check 2</label>
+				<input type="checkbox" id="check-1" name="check-1" value="Check 2" data-component="2"/>
+
 				<label for="options">
-					Option
+					Select:
 				</label>
-				<div class="input-wrapper">
+				<div class="input-wrapper" data-component="3">
 					<select name="options" id="options-1">
 						<option value="option1">Option1</option>
 						<option value="option2">Option2</option>
@@ -26,11 +33,11 @@
 			
 				<label for="email">
 					Email address
-					<input id="email" type="text" />
+					<input id="email" type="text" data-component="4"/>
 				</label>
 				<label for="checkInput">
 					Checked?
-					<input type="checkbox" id="checkInput" name="check" value="Checked?" />
+					<input type="checkbox" id="checkInput" name="check" value="Checked?" data-component="5"/>
 				</label>
 			</form>
 
