@@ -197,29 +197,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-
-
-
-
-    //Place element right position
-    // indicator.style.height = "20px";
-    // indicator.style.width = "20px";
-    //optionsElement.parentNode.appendChild(indicator);
-
-
-
-
-
-
-
-    
-
-
-
-
-    // Main timeline starts with loading animation
-   // tlMain
-        // .add(startLoading())
-        // .add(loading());
-
 });
