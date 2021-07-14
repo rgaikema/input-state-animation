@@ -33,7 +33,6 @@
     "copyfiles": "^2.4.1",
     "eslint": "^6.8.0",
     "eslint-loader": "^3.0.3",
-    "gsap": "file:gsap-bonus.tgz",
     "htmlnano": "^0.2.5",
     "imagemin-cli": "^5.1.0",
     "node-sass": "^4.13.1",

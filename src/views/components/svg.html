@@ -1,13 +1,13 @@
 <span class="svg_wrapper">
     <svg class="svg-animation" viewbox="0 0 24 24">
         <!-- Loading line group -->
-        <g class="loading_line">
+        <g class="border_stroke">
             <path
-                class="loading_line_path line"
+                class="stroke_path line"
                 d="
-                    M2,12
-                    a10,10 0 1,0 20,0
-                    a10,10 0 1,0 -20,0
+                    M1,12
+                    a11,11 0 1,0 22,0
+                    a11,11 0 1,0 -22,0
                 "
                 stroke-linecap="round" 
                 stroke-miterlimit="10" 
@@ -15,15 +15,14 @@
             />
         </g>
         <!-- End of loading line group -->
-
         <!-- Check mark group -->
         <g class="check_mark">
             <path 
                 class="check_mark_path line" 
                 d="
-                    M 2,12 
-                    l 7,6 
-                    l 12,-14
+                    M 6,12 
+                    l 5,6 
+                    l 6,-10
                 "
                 stroke-linecap="round" 
                 stroke-miterlimit="10" 
@@ -32,29 +31,29 @@
         </g>
         <!-- End of check mark group -->
 
-        <!-- Cross group -->
-        <g class="cross">
+        <!-- Error group -->
+        <g class="error_sign">
             <path
-                class="cross_stroke_left_path line" 
+                class="error_line_path line" 
                 d="
-                    M 6,6 
-                    L 18,18
+                    M 12,6 
+                    L 12,14
                 "
-                stroke-linecap="round" 
+                stroke-linecap="square" 
                 stroke-miterlimit="10" 
                 stroke-width="2" 
             />
             <path
-                class="cross_stroke_right_path line" 
+                class="error_dot_path line" 
                 d="
-                    M 18,6 
-                    L 6,18
+                    M 12,18 
+                    L 12,18
                 "
-                stroke-linecap="round" 
+                stroke-linecap="square" 
                 stroke-miterlimit="10" 
                 stroke-width="2" 
             />
         </g>
-        <!-- End of cross group -->
+		<!-- Error group -->
     </svg>
 </span>
